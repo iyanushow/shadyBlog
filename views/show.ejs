@@ -1,0 +1,50 @@
+<%- include ('partials/header.ejs') %>
+
+<div class="ui main text container segment">
+    <div class="ui huge header">
+        <%= blogPost['title']%>
+    </div>
+    <div class="ui top attached">
+        <div class="item">
+            <img class="ui large centered rounded bordered fluid image" src="/<%= blogPost.image %>" alt="">
+    
+            <div class="content">
+                <div class="meta">
+                    <span>
+                        Release Date: <%= blogPost.releaseDate.toDateString() %> 
+                    </span>
+                </div>
+                <div class="description container segment">
+                    
+                    <p>
+                        <%- blogPost.body %> 
+                    </p>
+                    Top Songs:
+                    <ul class="top-songs">
+                        <% blogPost.topSongs.forEach(song => { %>
+                            <li>
+                                <%= song %>
+                            </li>
+                        <% }) %>
+                    </ul>
+                </div>
+                <div class="extra" id="extra">
+                    <div class="mybuttons">
+                        <h3>
+                            Rating: <%= blogPost.rating %>
+                        </h3>
+                        <a href="/blogs/<%=blogPost._id %>/edit"  class="ui secondary button"> Edit Post</a>
+                        <form action="/blogs/<%=blogPost._id %>?_method=DELETE" method="post">
+                            <button class="ui red button">Delete Post</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+           
+            <span>Post Created: <%= blogPost.created.toDateString()%> - <%= blogPost.created.toLocaleTimeString()%> </span>
+            
+        </div>
+    </div>
+    
+</div>    
+

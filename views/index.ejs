@@ -1,0 +1,50 @@
+<%- include ('partials/header.ejs') %>
+
+<div class="ui main text container">
+    <div class="ui large centered header">
+        Welcome to Eminem Review Blog
+    </div>
+    <div class="ui top attached segment">
+        <ui class="ui divided items">
+            <% blogposts.forEach((post) =>{ %>
+                <div class="item">
+                    <div class="ui medium centered bordered fluid image">
+                        <img src="<%= post.image %>" alt="">
+                    </div>
+                    <div class="content">
+                        <a href="/blogs/<%=post._id %>" class="small centered"> <%= post.title %> </a> 
+                        <div class="meta">
+                            <span> <%= post.created.toDateString()%> - <%= post.created.toLocaleTimeString()%> </span>
+                        </div>
+                        <div class="description">
+                            <p>
+                                <%- post.body.substring(0,100) %> ...
+                            </p>
+                        </div>
+                        <div class="extra" id="extra">
+                            <div class="ui container post">
+                                <h3 class="ui labeled icon secondary button rate">
+                                    <i class="star outline icon"></i>
+                                    <%= post.rating %>
+                                </h3>
+                                <a href="/blogs/<%=post._id %>"  class="ui right labeled icon secondary button">More<i class="right chevron icon"></i> </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    
+                    
+                    
+            
+                </div>
+            <% }) %> 
+            
+        </ui>
+    </div>
+</div>
+
+
+
+
+<%- include ('partials/footer.ejs') %>

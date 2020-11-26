@@ -1,0 +1,62 @@
+<%- include ('partials/header.ejs') %>
+
+<div class="ui main text container segment">
+    <div class="ui huge header">
+        Edit <%= post.title %>  
+    </div>
+
+    <form action="/blogs/<%= post._id %>?_method=PUT" method="POST" class="ui form">
+        
+        <div class="field">
+            <label for="blogPost[title]"> Title</label>
+            <input type="text" name="blogPost[title]" id="" value="<%= post.title %>">
+        </div>
+
+        <div class="field">
+            <label for="blogPost[image]">imageUrl</label>
+            <input type="text" name="blogPost[image]" id="" value="<%= post.image %>">
+        </div>
+        <div class="field">
+            <label for="blogPost[releaseDate]"> Release Date</label>
+            <input type="date" name="blogPost[releaseDate]" id="" value="<%= post.releaseDate.toDateString %>" required>
+
+        </div>
+        <div class="field">
+            <label for="blogPost[body]"> Blog Description</label>
+            <textarea name="blogPost[body]"> <%= post.body %> </textarea> 
+
+        </div>
+        <div class="three fields">
+            <label for="blogPost[topSongs]"> Top Songs</label>
+            <div class="field">
+                <input type="text" name="blogPost[topSongs]" id="" value="<%= post.topSongs[0] %>">
+            </div>
+            <div class="field">
+                <input type="text" name="blogPost[topSongs]" id="" value="<%= post.topSongs[1] %>">
+            </div>
+            <div class="field">
+                <input type="text" name="blogPost[topSongs]" id="" value="<%= post.topSongs[2] %>"> 
+            </div>
+    
+        </div>
+        <div class="field">
+            <label for="blogPost[rating]"> Rate the Album</label>
+            <input type="number" name="blogPost[rating]" id="" value="<%= post.rating %>" max="10">
+
+        </div>
+        
+        
+        <input type="submit" value="Update Blog" class="ui black basic button">
+    
+    
+        
+        
+        
+    </form>
+</div>
+
+
+
+
+
+<%- include ('partials/footer.ejs') %>
